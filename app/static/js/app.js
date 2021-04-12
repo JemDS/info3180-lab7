@@ -31,6 +31,7 @@ const UploadForm = {
     template: 
     `
         <div class="form-container">
+        
             <div class="msg-box">
                 <div v-if="message[0] == 'success'">
                     <p class="btn btn-success">{{message[1]}}</p>
