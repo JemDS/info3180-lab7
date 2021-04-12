@@ -1,3 +1,26 @@
 body {
     padding-top: 5rem;
 }
+
+.form-container{
+	border-radius: 5px;
+	background-color: #e9ecef;
+	padding: 20px;
+	margin: auto;
+	width: 60%;
+}
+
+.form-header{
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+.form-group{
+	padding: 20px;
+}
+
+.msg-box{
+	width: 40%;
+	text-align: center;
+	padding: 40px;
+}

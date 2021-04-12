@@ -6,10 +6,11 @@ This file creates your application.
 """
 import os
 from app import app
-from flask import render_template, request, redirect, url_for, flash, session, abort
+from flask import render_template, request,flash, session, abort
 from werkzeug.utils import secure_filename
 from .forms import UploadForm
 from flask import send_from_directory
+from flask import jsonify
 
 ###
 # Routing for your application.
@@ -17,8 +18,6 @@ from flask import send_from_directory
 
 @app.route('/api/upload', methods=['POST'])
 def upload():
-    if not session.get('logged_in'):
-        abort(401)
 
     # Instantiate your form class
     form = UploadForm()
@@ -37,11 +36,12 @@ def upload():
             photo.save(os.path.join(filefolder,filename))
             #img.save(os.path.join(app.instance_path, 'images',filename))
             
-            return jsonify({
-                "message": "File Upload Successful",
-                "filename": "your-uploaded-file.jpg",
-                "description": "Some description for your image"
-                })
+            data = {"message": "File Upload Successful",
+                    "filename": "filename",
+                    "description": "description"
+                   }
+
+            return jsonify(data)
             
     return jsonify({"errors":[form_errors(form)]})
 
